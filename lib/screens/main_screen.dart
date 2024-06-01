@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/movie.dart';
 import '../widgets/movie_card.dart';
 
 class MainScreen extends StatelessWidget {
@@ -14,67 +15,51 @@ class MainScreen extends StatelessWidget {
           children: [
             MovieCard(
               movie: Movie(
-                title: 'Movie Title 1',
-                details: 'Details 1',
-                description: 'Description 1',
-                imageUrl: 'assets/movie1.jpg', // Example image path
-              ),
+                  adult: false,
+                  backdropPath: "/g2QDxkiMFtYcpnXbmLp3ywhNUBZ.jpg",
+                  genreIds: [
+                    28,
+                    12,
+                    878,
+                    10749
+                  ],
+                  id: 786892,
+                  originalLanguage: "en",
+                  originalTitle: "Furiosa: A Mad Max Saga",
+                  overview:"As the world fell, young Fu",
+                  popularity:1073.275,
+                  posterPath:"/iADOJ8Zymht2JPMoy3R7xceZprc.jpg",
+                  releaseDate:"2024-05-22",
+                  title:"Furiosa: A Mad Max Saga",
+                  video:false,
+                  voteAverage:  5197.722,
+                  voteCount: 519
+
+              )
             ),
             MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
-            ),
-            MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
-            ),
-            MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
-            ),
-            MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
-            ),
-            MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
-            ),
-            MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
-            ),
-            MovieCard(
-              movie: Movie(
-                title: 'Movie Title 2',
-                details: 'Details 2',
-                description: 'Description 2',
-                imageUrl: 'assets/movie2.jpg', // Example image path
-              ),
+                movie: Movie(
+                    adult: false,
+                    backdropPath: "/g2QDxkiMFtYcpnXbmLp3ywhNUBZ.jpg",
+                    genreIds: [
+                      28,
+                      12,
+                      878,
+                      10749
+                    ],
+                    id: 786892,
+                    originalLanguage: "en",
+                    originalTitle: "Furiosa: A Mad Max Saga",
+                    overview:"As the world fell, young Fu",
+                    popularity:1073.275,
+                    posterPath:"/iADOJ8Zymht2JPMoy3R7xceZprc.jpg",
+                    releaseDate:"2024-05-22",
+                    title:"Furiosa: A Mad Max Saga",
+                    video:false,
+                    voteAverage:  5197.722,
+                    voteCount: 519
+
+                )
             ),
             // Add more MovieCards here as needed
           ],

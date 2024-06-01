@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/movie.dart';
+
 class MovieCard extends StatelessWidget {
   final Movie movie;
 
@@ -16,7 +18,7 @@ class MovieCard extends StatelessWidget {
           SizedBox(
             width: 100.0,
             child: Image.asset(
-              movie.imageUrl,
+              movie.posterPath,
               fit: BoxFit.cover,
             ),
           ),
@@ -35,12 +37,12 @@ class MovieCard extends StatelessWidget {
                   ),
                   SizedBox(height: 5.0),
                   Text(
-                    movie.details,
+                    movie.originalLanguage,
                     style: TextStyle(fontSize: 16.0),
                   ),
                   SizedBox(height: 5.0),
                   Text(
-                    movie.description,
+                    movie.overview,
                     style: TextStyle(fontSize: 16.0),
                   ),
                 ],
@@ -51,18 +53,4 @@ class MovieCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class Movie {
-  final String title;
-  final String details;
-  final String description;
-  final String imageUrl;
-
-  Movie({
-    required this.title,
-    required this.details,
-    required this.description,
-    required this.imageUrl,
-  });
 }
