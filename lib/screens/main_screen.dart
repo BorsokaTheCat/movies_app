@@ -71,10 +71,16 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movies'),
+        title: const Text(
+          'Movies',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: Icon(Icons.language),
+            icon: const Icon(Icons.language),
             onPressed: () => _showLanguageChooser(context),
           ),
         ],
@@ -86,10 +92,16 @@ class _MainScreenState extends State<MainScreen> {
             child: TextField(
               controller: _searchController,
               onChanged: _filterMovies,
-              decoration: InputDecoration(
-                labelText: 'Search Movies',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+              decoration: const InputDecoration(
+                hintText: 'Search',
+                hintStyle: TextStyle(color: Colors.grey), // Darker gray color for hint text
+                prefixIcon: Icon(Icons.search, color: Colors.grey), // Adjust icon color if needed
+                filled: true,
+                fillColor: Color(0xFFEFEFEF), // Light gray background
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)), // Rounded edges
+                  borderSide: BorderSide.none, // No border
+                ),
               ),
             ),
           ),
@@ -106,9 +118,7 @@ class _MainScreenState extends State<MainScreen> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: _filteredMovies.map((movie) {
         return MovieCard(
-          title: movie.title,
-          overview: movie.overview,
-          posterPath: movie.posterPath,
+          movie: movie,
         );
       }).toList(),
     );
