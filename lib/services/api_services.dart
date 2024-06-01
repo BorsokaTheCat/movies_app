@@ -16,7 +16,6 @@ class ApiService {
 
     if (response.statusCode == 200) {
       final jsonBody = json.decode(response.body);
-      print(jsonBody);
       final List<dynamic> results = jsonBody['results'];
       return results.map((json) => Movie.fromJson(json)).toList();
     } else {
