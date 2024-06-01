@@ -1,8 +1,8 @@
-// main_screen.dart
 import 'package:flutter/material.dart';
 import '../models/movie.dart';
 import '../services/api_services.dart';
 import '../services/movie_service.dart';
+import '../widgets/language_chooser_dialog.dart';
 import '../widgets/movie_card.dart';
 
 class MainScreen extends StatefulWidget {
@@ -44,11 +44,28 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
+
+    void _showLanguageChooser(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return LanguageChooserDialog(); // Use the LanguageChooserDialog widget
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Movies'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.language),
+            onPressed: () => _showLanguageChooser(context),
+          ),
+        ],
       ),
       body: ListView(
         children: [
