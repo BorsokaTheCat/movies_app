@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/utils/constants.dart';
 import 'package:provider/provider.dart';
 import '../models/language.dart';
 import '../models/movie.dart';
@@ -34,7 +35,6 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> _fetchMovies({String? language}) async {
-    print(language ?? 'en-US');
     final movies = await _apiService.getNowPlayingMovies(language: language ?? 'en-US');
     setState(() {
       _movies = movies;
@@ -88,16 +88,16 @@ class _MainScreenState extends State<MainScreen> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(AppPadding.medium),
             child: TextField(
               controller: _searchController,
               onChanged: _filterMovies,
               decoration: const InputDecoration(
                 hintText: 'Search',
-                hintStyle: TextStyle(color: Colors.grey), // Darker gray color for hint text
-                prefixIcon: Icon(Icons.search, color: Colors.grey), // Adjust icon color if needed
+                hintStyle: TextStyle(color: AppColors.hintTextColor), // Darker gray color for hint text
+                prefixIcon: Icon(Icons.search, color: AppColors.hintTextColor), // Adjust icon color if needed
                 filled: true,
-                fillColor: Color(0xFFEFEFEF), // Light gray background
+                fillColor: AppColors.lightGray, // Light gray background
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12.0)), // Rounded edges
                   borderSide: BorderSide.none, // No border

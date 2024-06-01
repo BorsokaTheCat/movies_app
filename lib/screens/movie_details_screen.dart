@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/utils/constants.dart';
 import '../models/movie.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final Movie movie;
 
-  const MovieDetailsScreen({
+  const MovieDetailsScreen({super.key,
     required this.movie,
   });
 
@@ -34,22 +35,22 @@ class MovieDetailsScreen extends StatelessWidget {
                   children: [
                     Text(
                       movie.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: AppPadding.medium),
                     Row(
                       children: [
-                        Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 6),
+                        const Icon(Icons.star, color: AppColors.yellowColor, size: 16),
+                        const SizedBox(height: AppPadding.small),
                         Text(
                           movie.voteAverage.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
-                            color: Colors.yellow,
+                            color: AppColors.yellowColor,
                           ),
                         ),
                       ],
@@ -60,11 +61,11 @@ class MovieDetailsScreen extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(AppPadding.large),
             child: Text(
               movie.overview,
-              style: TextStyle(fontSize: 16,
-              color: Color(0xFF969696)),
+              style: const TextStyle(fontSize: 16,
+              color: AppColors.textColor),
             ),
           ),
         ],
@@ -72,9 +73,9 @@ class MovieDetailsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pop(context);
-        },
-        child: Icon(Icons.arrow_back, color: Colors.white), // Custom back button
-        backgroundColor: Colors.transparent, // Background color of the button
+        }, // Custom back button
+        backgroundColor: Colors.transparent,
+        child: const Icon(Icons.arrow_back, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );

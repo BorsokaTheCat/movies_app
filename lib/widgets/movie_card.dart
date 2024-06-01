@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/movie_details_screen.dart';
 import '../models/movie.dart';
+import '../utils/constants.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -28,11 +29,11 @@ class MovieCard extends StatelessWidget {
           children: [
             Container(
               height: 150,
-              margin: EdgeInsets.only(top: 15),
+              margin: const EdgeInsets.only(top: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0xFFF1F1F1),
                     blurRadius: 5,
@@ -42,7 +43,7 @@ class MovieCard extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 100 + 16.0),
+                  const SizedBox(width: 100 + 16.0),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16.0),
@@ -52,7 +53,7 @@ class MovieCard extends StatelessWidget {
                         children: [
                           Text(
                             movie.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Color(0xFF4D4D4D),
@@ -63,23 +64,23 @@ class MovieCard extends StatelessWidget {
                           const SizedBox(height: 4),
                           Row( // Add row here
                             children: [
-                              Icon(Icons.star, color: Colors.yellow, size: 16),
-                              SizedBox(width: 4),
+                              const Icon(Icons.star, color: AppColors.yellowColor, size: 16),
+                              const SizedBox(width: 4),
                               Text(
                                 movie.voteAverage.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
-                                  color: Colors.yellow,
+                                  color: AppColors.yellowColor,
                                 ),
                               ),
-                              SizedBox(width: 8),
-                              Icon(Icons.favorite, color: Colors.red, size: 16),
-                              SizedBox(width: 4),
+                              const SizedBox(width: 8),
+                              const Icon(Icons.favorite, color: AppColors.redColor, size: 16),
+                              const SizedBox(width: 4),
                               Text(
                                 movie.popularity.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
-                                  color: Colors.red,
+                                  color: AppColors.redColor,
                                 ),
                               ),
                             ],
