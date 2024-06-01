@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/movie_details_screen.dart';
+
 class MovieCard extends StatelessWidget {
   final String title;
   final String overview;
@@ -14,16 +16,30 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4, // Adjust elevation as needed
-      margin: EdgeInsets.all(8), // Adjust margin as needed
-      child: ListTile(
-        title: Text(title),
-        subtitle: Text(overview),
-        leading: Image.network(
-          'https://image.tmdb.org/t/p/w200$posterPath',
-          width: 100,
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MovieDetailsScreen(
+              title: title,
+              overview: overview,
+              posterPath: posterPath,
+            ),
+          ),
+        );
+      },
+      child: Card(
+        elevation: 4, // Adjust elevation as needed
+        margin: EdgeInsets.all(8), // Adjust margin as needed
+        child: ListTile(
+          title: Text(title),
+          subtitle: Text(overview),
+          leading: Image.network(
+            'https://image.tmdb.org/t/p/w200$posterPath',
+            width: 100,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
