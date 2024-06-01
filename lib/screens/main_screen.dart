@@ -12,7 +12,7 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Movies'),
       ),
-      body: FutureBuilder<Map<String, dynamic>>(
+      body: FutureBuilder<List<Movie>>(
         future: _apiService.getNowPlayingMovies(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -20,15 +20,15 @@ class MainScreen extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-            final results = snapshot.data?['results'] ?? [];
+            final movies = snapshot.data ?? [];
             return ListView.builder(
-              itemCount: results.length,
+              itemCount: movies.length,
               itemBuilder: (context, index) {
-                final movie = results[index];
+                final movie = movies[index];
                 return MovieCard(
-                  title: movie['title'],
-                  overview: movie['overview'],
-                  posterPath: movie['poster_path'],
+                  title: movie.title,
+                  overview: movie.overview,
+                  posterPath: movie.posterPath,
                 );
               },
             );
@@ -38,5 +38,3 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
-
-
