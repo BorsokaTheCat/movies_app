@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/language.dart';
 import '../models/movie.dart';
+import '../providers/languages_provider.dart';
 import '../services/api_services.dart';
 import '../services/movie_service.dart';
 import '../widgets/language_chooser_dialog.dart';
@@ -30,13 +33,15 @@ class _MainScreenState extends State<MainScreen> {
     super.dispose();
   }
 
-  Future<void> _fetchMovies() async {
-    final movies = await _apiService.getNowPlayingMovies();
+  Future<void> _fetchMovies({String? language}) async {
+    print(language ?? 'en-US');
+    final movies = await _apiService.getNowPlayingMovies(language: language ?? 'en-US');
     setState(() {
       _movies = movies;
       _filteredMovies = movies;
     });
   }
+
 
   void _filterMovies(String query) {
     setState(() {
@@ -52,7 +57,14 @@ class _MainScreenState extends State<MainScreen> {
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return LanguageChooserDialog(); // Use the LanguageChooserDialog widget
+          return LanguageChooserDialog(
+            onLanguageSelected: (Language selectedLanguage) {
+              // Handle the selected language here
+
+              //api gives wrong data, so i moc the functionality  :(
+              _fetchMovies(language: "fr-FR");
+            },
+          ); // Use the LanguageChooserDialog widget
         },
       );
     }

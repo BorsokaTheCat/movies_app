@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/providers/languages_provider.dart';
 import 'package:movies_app/screens/main_screen.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => LanguageProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

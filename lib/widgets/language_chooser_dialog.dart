@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import '../models/language.dart';
 import '../services/api_services.dart';
+import 'package:provider/provider.dart';
+import '../providers/languages_provider.dart';
 
 class LanguageChooserDialog extends StatefulWidget {
+  final Function(Language) onLanguageSelected;
+
+  const LanguageChooserDialog({Key? key, required this.onLanguageSelected}) : super(key: key);
+
   @override
   _LanguageChooserDialogState createState() => _LanguageChooserDialogState();
 }
@@ -19,6 +25,7 @@ class _LanguageChooserDialogState extends State<LanguageChooserDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return AlertDialog(
       title: Text('Choose Language'),
       content: FutureBuilder<List<Language>>(
@@ -41,7 +48,7 @@ class _LanguageChooserDialogState extends State<LanguageChooserDialog> {
                 children: languages.map((language) {
                   return GestureDetector(
                     onTap: () {
-                      // Handle language selection here
+                      widget.onLanguageSelected(language); // Call the callback function with the selected language
                       Navigator.pop(context); // Close the dialog
                     },
                     child: Text(language.englishName),
@@ -53,6 +60,5 @@ class _LanguageChooserDialogState extends State<LanguageChooserDialog> {
         },
       ),
     );
-
   }
 }
