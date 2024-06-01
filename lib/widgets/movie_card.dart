@@ -35,7 +35,7 @@ class MovieCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: const [
                   BoxShadow(
-                    color: Color(0xFFF1F1F1),
+                    color: AppColors.lightGray,
                     blurRadius: 5,
                     offset: Offset(0, 3),
                   ),

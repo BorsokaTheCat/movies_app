@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/language.dart';
 import '../services/api_services.dart';
-import 'package:provider/provider.dart';
-import '../providers/languages_provider.dart';
 
 class LanguageChooserDialog extends StatefulWidget {
   final Function(Language) onLanguageSelected;
 
-  const LanguageChooserDialog({Key? key, required this.onLanguageSelected}) : super(key: key);
+  const LanguageChooserDialog({super.key, required this.onLanguageSelected});
 
   @override
   _LanguageChooserDialogState createState() => _LanguageChooserDialogState();
@@ -25,17 +23,16 @@ class _LanguageChooserDialogState extends State<LanguageChooserDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final languageProvider = Provider.of<LanguageProvider>(context);
     return AlertDialog(
-      title: Text('Choose Language'),
+      title: const Text('Choose Language'),
       content: FutureBuilder<List<Language>>(
         future: _languagesFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: SizedBox(
-                width: 40, // Adjust size as needed
-                height: 40, // Adjust size as needed
+                width: 40,
+                height: 40,
                 child: CircularProgressIndicator(),
               ),
             );
@@ -48,8 +45,8 @@ class _LanguageChooserDialogState extends State<LanguageChooserDialog> {
                 children: languages.map((language) {
                   return GestureDetector(
                     onTap: () {
-                      widget.onLanguageSelected(language); // Call the callback function with the selected language
-                      Navigator.pop(context); // Close the dialog
+                      widget.onLanguageSelected(language);
+                      Navigator.pop(context);
                     },
                     child: Text(language.englishName),
                   );

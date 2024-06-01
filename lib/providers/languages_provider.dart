@@ -7,6 +7,6 @@ class LanguageProvider extends ChangeNotifier {
 
   void changeLanguage(String newLanguage) {
     _selectedLanguage = newLanguage;
-    notifyListeners(); // Notify listeners of the change
+    notifyListeners();
   }
 }

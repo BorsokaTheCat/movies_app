@@ -12,7 +12,7 @@ class MovieDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null, // Hide the app bar
+      appBar: null,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,7 +73,7 @@ class MovieDetailsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pop(context);
-        }, // Custom back button
+        },
         backgroundColor: Colors.transparent,
         child: const Icon(Icons.arrow_back, color: Colors.white),
       ),
