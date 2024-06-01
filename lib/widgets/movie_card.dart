@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../screens/movie_details_screen.dart';
-import '../models/movie.dart'; // Import your Movie class
+import '../models/movie.dart';
 
 class MovieCard extends StatelessWidget {
-  final Movie movie; // Change the parameter to a Movie object
+  final Movie movie;
 
   const MovieCard({
     required this.movie,
@@ -17,9 +17,7 @@ class MovieCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => MovieDetailsScreen(
-              title: movie.title,
-              overview: movie.overview,
-              posterPath: movie.posterPath,
+              movie: movie,
             ),
           ),
         );
@@ -29,8 +27,8 @@ class MovieCard extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              height: 150, // Adjust height as needed
-              margin: EdgeInsets.only(top: 15), // Adjust margin to accommodate image
+              height: 150,
+              margin: EdgeInsets.only(top: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
@@ -44,10 +42,10 @@ class MovieCard extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  SizedBox(width: 100 + 16.0), // Adjust width to accommodate image width and padding
+                  SizedBox(width: 100 + 16.0),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16.0), // Adjust vertical padding here
+                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +53,7 @@ class MovieCard extends StatelessWidget {
                           Text(
                             movie.title,
                             style: TextStyle(
-                              fontSize: 18, // Adjust title font size here
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Color(0xFF4D4D4D),
                             ),
@@ -65,34 +63,34 @@ class MovieCard extends StatelessWidget {
                           const SizedBox(height: 4),
                           Row( // Add row here
                             children: [
-                              Icon(Icons.star, color: Colors.yellow, size: 16), // Yellow star icon or emoji
-                              SizedBox(width: 4), // Add spacing
+                              Icon(Icons.star, color: Colors.yellow, size: 16),
+                              SizedBox(width: 4),
                               Text(
                                 movie.voteAverage.toString(),
                                 style: TextStyle(
-                                  fontSize: 14, // Smaller font size
-                                  color: Colors.yellow, // Yellow color
+                                  fontSize: 14,
+                                  color: Colors.yellow,
                                 ),
-                              ), // Text next to the star icon
-                              SizedBox(width: 8), // Add more spacing
-                              Icon(Icons.favorite, color: Colors.red, size: 16), // Red heart icon or emoji
-                              SizedBox(width: 4), // Add spacing
+                              ),
+                              SizedBox(width: 8),
+                              Icon(Icons.favorite, color: Colors.red, size: 16),
+                              SizedBox(width: 4),
                               Text(
                                 movie.popularity.toString(),
                                 style: TextStyle(
-                                  fontSize: 14, // Smaller font size
-                                  color: Colors.red, // Red color
+                                  fontSize: 14,
+                                  color: Colors.red,
                                 ),
-                              ), // Text next to the heart icon
+                              ),
                             ],
                           ),
 
-                          SizedBox(height: 4), // Smaller bottom padding
+                          SizedBox(height: 4),
                           Text(
                             movie.overview,
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.grey[400], // Lighter grey color
+                              color: Colors.grey[400],
                             ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -112,7 +110,7 @@ class MovieCard extends StatelessWidget {
                 child: Image.network(
                   'https://image.tmdb.org/t/p/w200${movie.posterPath}',
                   height: 150,
-                  width: 100, // Adjust width as needed
+                  width: 100,
                   fit: BoxFit.cover,
                 ),
               ),
